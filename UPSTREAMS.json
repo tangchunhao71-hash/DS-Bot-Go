@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "project": "DS Bot Go",
+  "sources": [
+    {
+      "component": "mobile",
+      "upstream": "https://github.com/ccch1mneyyy/dsh-Go",
+      "upstreamBase": "4cd4517dd7864604ea8d8c306a13d9f068113429",
+      "modifiedSourceCommit": "b8cb1b957b6ecfb461df4996500d91f7a18fbe57",
+      "license": "AGPL-3.0",
+      "excludedNonBuildMaterial": [
+        ".github/",
+        ".agents/",
+        "site/",
+        "infra/",
+        "docs/assets/",
+        "app/tool/pet_src/",
+        "app/tool/whale_src/",
+        "app/test/**/goldens/** (generated UI reference images)"
+      ],
+      "exportedFiles": 3496
+    },
+    {
+      "component": "desktop/ds-bot",
+      "upstream": "https://github.com/Fei2411/DS-Bot",
+      "upstreamBase": "71d344bf193f3f18185f25de3d8e5c483046910a",
+      "modifiedSourceCommit": "2d20dd39513e8d4a0efbd9e36a4886f1fd44ad36",
+      "license": "Apache-2.0",
+      "excludedNonBuildMaterial": [
+        ".agents/",
+        ".github/"
+      ],
+      "exportedFiles": 628
+    },
+    {
+      "component": "desktop/remote",
+      "upstream": "https://github.com/liguobao/ds-harness-remote",
+      "upstreamBase": "a0dca1af66cff788e467ee98e92a39afdafbb058",
+      "modifiedSourceCommit": "62a39d405895bb556e392d1f5854e85ea393f3ee",
+      "license": "MIT",
+      "excludedNonBuildMaterial": [
+        ".github/"
+      ],
+      "exportedFiles": 685
+    }
+  ]
+}

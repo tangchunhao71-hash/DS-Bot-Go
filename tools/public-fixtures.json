@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "reviewedUpstreamCommit": "https://github.com/ccch1mneyyy/dsh-Go/tree/4cd4517dd7864604ea8d8c306a13d9f068113429",
+  "reason": "These exact public upstream blobs were reviewed before release. The UI contains a header-only SSH input hint. Test files contain synthetic redaction/key-decoding fixtures, including an ED25519 key explicitly generated only for a regression test. No runtime credentials are exempted. Any byte change invalidates the exemption.",
+  "files": [
+    {"path":"mobile/app/lib/ui/remote/ssh_host_form.dart","sha256":"d70f6e543e43a8a00961055eb702f0c3d6a2b488da24f14887dbf57745a6a907"},
+    {"path":"mobile/app/test/chat/secret_mask_golden_test.dart","sha256":"4ac47f52d691ab3b9bb08d0716c01b559918f657b2134999b8c0167492f9ea21"},
+    {"path":"mobile/app/test/chat/secret_mask_test.dart","sha256":"24c73e9e9e33adf611635355d724e0df7fea53148ff1c581b1369b05227878a6"},
+    {"path":"mobile/app/test/diagnostics/app_error_log_test.dart","sha256":"faaab1517c80e331b7d7fad704bf50a804bec73ef4fbeb08a94c9a96614e935e"},
+    {"path":"mobile/app/test/diagnostics/redact_test.dart","sha256":"3df2332416188111186413ee5f30e036fe0055897fcbc29f555207cdb66216ef"},
+    {"path":"mobile/app/test/remote/ssh_key_callback_lifetime_test.dart","sha256":"92e532b725d495f8508802a7b3069cc1b3fd416c3699697d24b230315dc1d82d"},
+    {"path":"mobile/app/test/remote/ssh_key_decode_test.dart","sha256":"d3e98ccbc9ac5de7c16c3aae0f763ee36735a80007829d0bed5301e7b4b0e942"},
+    {"path":"mobile/app/test/share_code/share_security_test.dart","sha256":"19ac8137457a1c7d4280998d1b05da423be0f12fdec0d912344fd4401eaa86ec"}
+  ]
+}

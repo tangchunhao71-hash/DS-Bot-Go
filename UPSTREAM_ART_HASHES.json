@@ -1,0 +1,468 @@
+{
+  "schema": 1,
+  "upstream": "https://github.com/ccch1mneyyy/dsh-Go",
+  "commit": "4cd4517dd7864604ea8d8c306a13d9f068113429",
+  "purpose": "Identity check for reserved upstream art; no original image bytes are included here.",
+  "files": [
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "gitBlob": "59cd81c064ead722b8d98f4fdd10f6858f857afa"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "gitBlob": "07e759edec9d938a4d9fbce7b9a9d2303bed29ca"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_frost.png",
+      "gitBlob": "4a50d51e85e0c1ee9370cf16273e3734d399e602"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_frost_foreground.png",
+      "gitBlob": "354fa0be1dcffb612379e8dc59934abae6691031"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_frost_round.png",
+      "gitBlob": "93ef06763ba9eb9e71e05c4c8ee8c783f5c47b5f"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_ink.png",
+      "gitBlob": "c86d51946bf864cea66d1e4f4f57e4ca84b24313"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_ink_foreground.png",
+      "gitBlob": "fa1d208af04e40c649bdebafd06eff9728c7b3ea"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_ink_round.png",
+      "gitBlob": "b562b767f060fcf6b8636f9dd93de0ca027d07e1"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_night.png",
+      "gitBlob": "7229779d107bc98b6d391a6a5d5568fc922d99ed"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_night_foreground.png",
+      "gitBlob": "716a1283768c5514d48a294ede5d16f7288a40b2"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_night_round.png",
+      "gitBlob": "150045c84b0d2cf5f3723a67e081ebc46b12b469"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "gitBlob": "b1f8814e676690afc2f6dfc009d15696fb1d9f01"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "gitBlob": "690025578396917fc8561ca1c1635a63c87a0afc"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "gitBlob": "a22b44b0856ccde982ab9179bc66f91ef0c8d5a5"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_frost.png",
+      "gitBlob": "62b5aecb68c4612fd7165e183081a1ae55454643"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_frost_foreground.png",
+      "gitBlob": "3632a3ccd1a6d32f06b05a9fac22a5ec8fc2571d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_frost_round.png",
+      "gitBlob": "54d2c849eca09aea95cec1d72339aad1f278a717"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_ink.png",
+      "gitBlob": "fbdee94f8c3f8ec25417f0c03a1a2ef32c2047e0"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_ink_foreground.png",
+      "gitBlob": "c71b55493ee30ed2d1c314ecea76815e8bd9c4f1"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_ink_round.png",
+      "gitBlob": "1daab62f337ec3f423eec652a3b3a151c41d5bac"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_night.png",
+      "gitBlob": "2c6b57b29e8a5e5a430bb4aa7f4f599fc3aa4448"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_night_foreground.png",
+      "gitBlob": "3fb0c01ba0f5ef0ffba668499fd55f24a07a2a1c"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_night_round.png",
+      "gitBlob": "a922b3426144049ee27ee6426038f3f73685a488"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "gitBlob": "e6209630ecbad8c5ca43448b5c9f7b944bd1c2cd"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "gitBlob": "98b71d2b972cf0307173880e5e1c23b8ead5e2bc"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "gitBlob": "f0556370f0b87a705d68107113b6179a1e2ad2d3"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_frost.png",
+      "gitBlob": "99cd80c8a1d686e0ad55448c560f02215060c15c"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_frost_foreground.png",
+      "gitBlob": "a77316f7fb636fafc85727e7187429e8aa510773"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_frost_round.png",
+      "gitBlob": "b7e2134a5065a63839a5d6053b1591a1f18c2666"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_ink.png",
+      "gitBlob": "cd42ad85b4fce7c45681b2d255bdbecdb6f0e78f"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_ink_foreground.png",
+      "gitBlob": "8f7c753c9f0b98a113bbf16c0de0b3334f3ae08c"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_ink_round.png",
+      "gitBlob": "5d8bc698b46796fd3cd3d2f8e0ed9eb56d5bf70e"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_night.png",
+      "gitBlob": "413826c958b733469b0ed6dd6806d1a81e0141b5"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_night_foreground.png",
+      "gitBlob": "2af7e2f7c3670adb02470d8667b6f331df824a13"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_night_round.png",
+      "gitBlob": "f8fe6889a0d028983c1ea75b8b370890f647e90d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "gitBlob": "91791695f64e203b4232d67cbc39597b7fdeb9c1"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "gitBlob": "ab01f98b6f932c8e44f2a8018261b4bbe779af33"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "gitBlob": "1956abe378ce8faf28537a5822175820e50241c8"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_frost.png",
+      "gitBlob": "6bb9615de07ec5316b3081d52c0a440b41803423"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_frost_foreground.png",
+      "gitBlob": "f2208193662a430815ea1ebfcfc39221069fab2a"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_frost_round.png",
+      "gitBlob": "526792328b6501dd40681fc0b89eb3f80fabdc34"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_ink.png",
+      "gitBlob": "e0442b67a815fedcfa87a2006e744faa6d9aa3b7"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_ink_foreground.png",
+      "gitBlob": "398ced8c941786e086f8e56612c782e7e497f08e"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_ink_round.png",
+      "gitBlob": "db933d870df7f823b79ca90b349d18adebaf41df"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_night.png",
+      "gitBlob": "51fc435990858fac6a63d81d9766d3219c699c0a"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_night_foreground.png",
+      "gitBlob": "3840a0e6cbb45398aaf6bcd412591b43d81f594f"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_night_round.png",
+      "gitBlob": "bc2a8df4109f9c856838663c37728ece0e6a2a2d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "gitBlob": "8026f5882d6219bfbe8f33c5163ac425428d8863"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "gitBlob": "c1dde2ba8a41fff5a61637c0cb10a959bad4d99f"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "gitBlob": "edb3dca94a23c5350ed0d01dcfd185caedf39e9b"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_frost.png",
+      "gitBlob": "a98c25e009d473c960d6f88b173d7941b8e5765e"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_frost_foreground.png",
+      "gitBlob": "dfde4a5eb37c49cb3d7f1916392e8a157c7f4ba1"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_frost_round.png",
+      "gitBlob": "f6217d77c780c1b5f3071048050635c211cb9b2e"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_ink.png",
+      "gitBlob": "7ee53a38f780f1cdda28a5055498fbace4c53f96"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_ink_foreground.png",
+      "gitBlob": "fe93cea6e0dc434ce0484b756c725472aeca541d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_ink_round.png",
+      "gitBlob": "a3485b0bb35ef9c7a5451aa6bce697a2fc68e156"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_night.png",
+      "gitBlob": "7d0c19117b0bed616e5d20a0c97df2eb1302679d"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_night_foreground.png",
+      "gitBlob": "1068cb6b69373cdeac439ea118399632b15b6ab9"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_night_round.png",
+      "gitBlob": "af9da58c77b6935d372b4dbf406518ebb696e5bc"
+    },
+    {
+      "path": "app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "gitBlob": "c03398effcbcf22ec645f8f8930eb705ee99a4fb"
+    },
+    {
+      "path": "app/assets/brand/glyph-dark.svg",
+      "gitBlob": "3f6386913276144857acc5a0cba2eb2dbfab8720"
+    },
+    {
+      "path": "app/assets/brand/glyph-light.svg",
+      "gitBlob": "667240839db1395df06fe31c6533e7e2df3652e7"
+    },
+    {
+      "path": "app/assets/brand/glyph-mono.svg",
+      "gitBlob": "6d8084a25b77c71076e24c3d0cc86e7cac04b24b"
+    },
+    {
+      "path": "app/assets/brand/tile.svg",
+      "gitBlob": "d22c37375e6aabdf36865dd2211fc7e67e0044ed"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/building.png",
+      "gitBlob": "1d4fbcae825c99af67184fa0b4e32a1c057843c1"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/carrying.png",
+      "gitBlob": "e6e15f17f1e12974e55258839475d3d0b16f7fd8"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/compacting.png",
+      "gitBlob": "835d8811e2f34d45f02748ddcfdcfff3bb8b8685"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/conducting.png",
+      "gitBlob": "cb63a2bcde99c23b03b9316dc90ad4c013cc5e01"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/error.png",
+      "gitBlob": "b14728c8b3ccc94d82a3260c46da9b16d06638d3"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/happy.png",
+      "gitBlob": "d6fbdee9661c229174a330a055d7c7d3922e47aa"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/idle-look.png",
+      "gitBlob": "4e38683af17e3a7a01bbe5740ba51f62ffded76b"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/idle-spout.png",
+      "gitBlob": "e2854f180778e63da985f331f500e2ff0d4ee8ff"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/idle.png",
+      "gitBlob": "5087aab36484389fee74b369423c4bc23e5107c1"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/music.png",
+      "gitBlob": "662d587a9b8766540b42d8e7bb61a5cf837265bc"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/notification.png",
+      "gitBlob": "88a6e9f142c071321e200f2fca18dfbdb2790582"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/pack.json",
+      "gitBlob": "7e092e6a8470f63183fec1233fa8917ac217b839"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/react-double.png",
+      "gitBlob": "c3f283f9f771cff0db2f1e4e2ff897e911593c20"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/react-drag.png",
+      "gitBlob": "4200e0da0c0853a67b4fea84f97a372f85fad069"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/react-left.png",
+      "gitBlob": "94bf8eaa7793cfff55b277ead516488abacca270"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/react-right.png",
+      "gitBlob": "7ddadee1946ebca99701ab263b581cc57c33c330"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/roam-hop.png",
+      "gitBlob": "6bcd12d2b2cc64a3a7ee7bbeced2352b85f8416c"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/sleeping.png",
+      "gitBlob": "a37d426506236a040252782e214edb097c587754"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/thinking.png",
+      "gitBlob": "7e910a923fe266ec345e7109c3715e0af4a78bd6"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/typing.png",
+      "gitBlob": "f98e2cd387839d3d533d3a168154a3a7b0e51233"
+    },
+    {
+      "path": "app/assets/pets/deepy-whale/waking.png",
+      "gitBlob": "ceb5c3793ef69e0500810bfe5f01d865b3355cb8"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/building.png",
+      "gitBlob": "40794a656f14d6e7434b8288fd6ea27037eb1b60"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/carrying.png",
+      "gitBlob": "82cf9e35fc9816800ffa8a8c9ec6506ca5218ef5"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/compacting.png",
+      "gitBlob": "63c2105dfd60519f17dfbf7b82f07896cb3836ab"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/conducting.png",
+      "gitBlob": "7b686b95b4532f6db2bfe27e4d4bc7777558e080"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/drag.png",
+      "gitBlob": "da65b40e652f020a8611eb50c542a68dddb84277"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/error.png",
+      "gitBlob": "eb00fa73449c17cde316e95c7894fefa14390c1f"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/happy.png",
+      "gitBlob": "9527224063413e6aea6bfc276bff13daea1b38e7"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/idle-look.png",
+      "gitBlob": "ae7092aa820f5584a5a6c23c08dfd2791b46b348"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/idle-spout.png",
+      "gitBlob": "de6fe4fb700c17f804671647e5f720e33ace95dc"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/idle.png",
+      "gitBlob": "4b12faca3fe6b4422afc1b5dca0c6b2d25470127"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/music.png",
+      "gitBlob": "ff22278f89d673987b51a96f39d45c9014080e70"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/notification.png",
+      "gitBlob": "8e381247599453979c77c861e8bcfe74e9fbd247"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/pack.json",
+      "gitBlob": "9050e4ad785d10cbf12142d8701cc0a52058d358"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/poke-left.png",
+      "gitBlob": "95fa632cb8fa7e12a7e2cfeea31cfa01cddb16fa"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/poke-right.png",
+      "gitBlob": "4706d8bb83b390290d4e50b3d5e7518f7c2e6f2a"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/sleeping.png",
+      "gitBlob": "e38b10d5792a8f12cd4a4dfffbbe313376a6c83f"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/smile-hearts.png",
+      "gitBlob": "936fede3d253552cc8e8625586f4ad1da7322b03"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/swim.png",
+      "gitBlob": "6af0619895a7dd34e767663e58afc17cc500116f"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/thinking.png",
+      "gitBlob": "e5988b2e00b6be6ba3b46522cded592991edec5a"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/thumbs-up.png",
+      "gitBlob": "152d20d7ea792bd6f390e92b3d2032134734e40d"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/tickle.png",
+      "gitBlob": "573c0c149467705418e3124d4b267319c027669a"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/typing.png",
+      "gitBlob": "0e09533d86579ee4e148d073c5ecaf2a31734eab"
+    },
+    {
+      "path": "app/assets/pets/whale-girl/waking.png",
+      "gitBlob": "5a806f0317b6c842aaf46d3fdc52a31a18c64811"
+    },
+    {
+      "path": "app/assets/star/star_whale.webp",
+      "gitBlob": "81170878f92ed0afa3a5bb44b9feebda30be2b84"
+    },
+    {
+      "path": "app/assets/whale/whale.json",
+      "gitBlob": "b9c68acf9bb6a3e9bef2656ae6cffd2911f9d775"
+    },
+    {
+      "path": "app/assets/whale/whale_1.png",
+      "gitBlob": "f550696ee401433306ef43d9240b36858ad80468"
+    },
+    {
+      "path": "app/assets/whale/whale_2.png",
+      "gitBlob": "0b0a2d45496769d66368f6838c83efc5df8b4c2d"
+    },
+    {
+      "path": "app/assets/whale/whale_3.png",
+      "gitBlob": "834629b64751375ee6d4cfaf320be43c3c920f2a"
+    },
+    {
+      "path": "app/assets/whale/whale_4.png",
+      "gitBlob": "53c89f3d5fa48ee817bac47261171be5b769ee11"
+    },
+    {
+      "path": "app/lib/ui/shell/brand_glyph.g.dart",
+      "gitBlob": "b58688178bc81e94589bd5989dcb676c43f14ac9"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+node_modules/
+.pnpm-store/
+dist/
+!packages/plugin/dist/
+packages/plugin/dist/*
+!packages/plugin/dist/index.js
+!packages/plugin/dist/client.github.js
+.turbo/
+.local/
+.vite/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+*.db
+*.sqlite
+*.sqlite3
+.env
+.DS_Store
+.codegraph/
+artifacts/
+# Local verification screenshots and recordings
+/docs/screenshots/
+*.tgz
+
+# Minimal self-hosted Server credentials and local state
+apps/server/data/

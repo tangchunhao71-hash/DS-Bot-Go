@@ -1,0 +1,29 @@
+name: PR intake
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  owner-only:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce external PR policy
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (pr.user.login.toLowerCase() === context.repo.owner.toLowerCase()) return;
+            if (pr.state !== 'closed') {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: pr.number,
+                body: '感谢关注。DS Bot Go 暂不接收或合并外部 PR，请通过 Issue 描述问题或建议。此维护政策不限制许可证授予的 Fork 和再分发权利。'
+              });
+              await github.rest.pulls.update({ ...context.repo, pull_number: pr.number, state: 'closed' });
+            }
+            core.setFailed('External pull requests are not accepted. Please open an Issue.');

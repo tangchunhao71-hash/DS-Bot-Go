@@ -1,0 +1,19 @@
+*.apk
+*.keystore
+*.jks
+key.properties
+.env
+.env.local
+.credentials*
+device.key
+node_modules/
+.dart_tool/
+build/
+/dist/
+runtime/out/
+local.properties
+.DS_Store
+Thumbs.db
+
+# Generated visual-test references are retained in local audit, not the release source.
+/mobile/app/test/**/goldens/

@@ -1,0 +1,291 @@
+# DSH Remote for Android
+
+React Native / Expo SDK 57 client for controlling a trusted DeepSeek Harness host over the
+[Remote Protocol v1](../../docs/protocol.md) Typert Remote tunnel, including the optional
+CodeX App Server domain advertised by the Host.
+
+Harness `0.1.1-rc.2` ApiProxy-only Hosts are no longer supported; capability discovery and a Typert Remote carrier are required.
+
+## Implemented flow
+
+- Configure and health-check a Remote server (defaults to the official
+  `https://dsh.r2049.cn`; override at build time with `EXPO_PUBLIC_DSH_REMOTE_SERVER`); sign in
+  with the Server account once to register the Android device and rotate its access/refresh
+  tokens in SecureStore.
+- Open “Switch server” from the sign-in page’s three-dot menu to edit the server
+  address in a modal, then save to validate and persist the server used by all login methods.
+  Saving refreshes the available login methods from that server; only configured
+  OAuth providers are shown, and QR entry points follow their advertised support.
+  Switching servers disconnects the old host and clears its credentials and trust.
+- Sign-in tabs offer Zhihu, GitHub, Google, and email. Each OAuth tab can switch
+  between direct authorization and its own QR code when supported by the Server;
+  email uses the password form. Zhihu direct authorization opens the installed
+  Zhihu app first and falls back to the browser if it cannot be launched.
+- Generate a random Android client identity and keep its private key in Keystore-backed
+  `expo-secure-store`.
+- List same-account Harness hosts, fetch each host's authorized peer descriptor, verify its
+  identity key, and pin it locally; a changed key fails closed and is never silently replaced.
+- Rename an online or offline Host with the pencil button in the device list or **Rename**
+  in device details, without connecting first. The name is saved
+  through the hosted Server's account-device API, matching Web management, and updates the
+  device list, connected device and saved workspace shortcuts. Servers without this endpoint
+  show an error and keep the original name.
+- Establish a Noise IK channel over an adaptive transport (WebRTC P2P/TURN with Relay fallback) and
+  reject tampered, replayed, or wrong-identity frames.
+- Drive the Host through the official Typert Remote Gateway after
+  encrypted capability probing:
+  browse sessions (including archived ones), create sessions, stream live session frames, send
+  text/image prompts, cancel generation, page older history, switch the active model and its
+  declared reasoning effort from the host's catalog, manage host workspaces (create with a
+  read-only directory browser, rename, delete,
+  reorder), and answer approval / question requests through the official Typert event result endpoints.
+- Select PNG/JPEG/WebP/GIF images from Android's system picker, preflight the Host-projected image
+  limits, preview them in the composer, and carry large native `session/prompt` envelopes through
+  the bounded `harness.remote.transfer.*` path. Image processing and provider upload remain on the Host.
+- When the Host advertises `codex.appserver.v1`, merge CodeX `project/list` roots into the workspace
+  screen without creating local workspaces, show their allowlisted Threads as conversations, page
+  `dsh/sessionHistory`, reduce live reasoning/plan/tool frames, send text or system-picker image
+  prompts over `codex.app.*`, switch CodeX model/reasoning and fixed permission presets, interrupt
+  the active turn, and answer one-time command/file approvals. CodeX workspaces remain read-only in
+  Android because the Host's `project/list` is authoritative.
+- Reconnect after Android network/app lifecycle changes. The connection transport can be
+  pinned in Settings (Auto / TURN first / Relay only) and is applied on reconnect.
+- Follow the system rotation setting (the app is not locked to portrait). Portrait and landscape
+  reuse the same route/connection state; chat content and the composer stay in a readable centred
+  column on wide windows, bottom sheets and workspace dialogs are capped by the live window height
+  and scroll their bodies on short landscape windows, and the IME inset is re-synced after rotation.
+- Sign in by scanning a Server QR code on phones, tablets and other large screens. A **Scan**
+  entry on the sign-in screen requests the Server-owned provider list and shows the QR code only
+  after it is tapped; the app renders the same-origin `scanUrl` locally, polls the one-time QR
+  session and then registers this Android device with the returned account token. Large screens
+  use a larger code; browser OAuth and email/password sign-in remain available.
+- Show the interface in English, Simplified Chinese, Traditional Chinese, Japanese, Spanish, German, or French. Follow Android's current locale by default and persist an explicit in-app language choice across launches. Language settings initially show System default, 简体中文, and English; tap “More ...” to expand all languages. A selected additional language keeps the full list visible.
+- Show the installed app/build version and the complete open-source repository and latest-release
+  addresses in Settings; both addresses open in the system browser.
+- Open saved prompts directly from **Prompts** beside the composer's `+` button. Tap a
+  prompt to send it, or edit the list in the same panel. Built-in translations, saved overrides,
+  deletions, and custom entries use the existing local storage. Files, Terminal, and Trajectory
+  remain under `+` → **Tool access**.
+
+The app does not run in Expo Go because WebRTC includes native code. Use a development build.
+
+## Conversation browsing and local previews
+
+The conversation drawer separates backends and includes title/workspace search, local
+favorites, running conversations and recent visits. Codex catalog pages are deduplicated by
+native thread ID, retaining the newest complete row; different threads with the same title
+remain separate.
+
+Switching conversations immediately shows any retained content while a small fresh history
+page loads. Sending stays disabled until the read and new subscription succeed. Obsolete
+reads are cancelled, and their late results cannot replace the selected conversation.
+Large Codex tool results load when expanded on supporting Hosts; older Hosts retain the
+existing bounded-transfer path.
+
+Text drafts, favorites, reading anchors and recent visits are stored encrypted and isolated by
+server/account/Host identity. Conversation text previews are no longer persisted; hydration
+removes legacy previews while preserving drafts and preferences. Image drafts remain in memory
+for the current process. Approval handles, pending sends, permissions and tool output are not
+persisted as conversation previews.
+
+Settings offers optional last-conversation restoration (off by default), completion/live-input
+notifications and system notification settings. Notifications require a live connection and
+Android permission; the app does not add a push service. Sign-out and local reset clear private
+browsing state. There is no separate conversation-preview cleanup control.
+
+The Host sidebar includes automation tasks: search and filter active/inactive tasks, inspect
+rules and records, delete a task, and open its session. New tasks are created through a
+conversation with the Host's native scheduling tool, not a separate mobile scheduler.
+Native-device and cross-device acceptance of this recently merged interface remains pending.
+
+## Development
+
+```bash
+pnpm install
+pnpm --filter @dsh-remote/android start
+```
+
+To generate and install the native Android development build:
+
+```bash
+pnpm --filter @dsh-remote/android android
+```
+
+The Android `start`, `android`, `ios`, and `build` commands rebuild the shared protocol, crypto,
+WebRTC, and client-core packages first, then verify that the compiled client contains the
+Typert Remote, CodeX Remote, and Agent ACP capability paths. This prevents Metro or Gradle from
+silently packaging stale workspace `dist` files.
+
+Android Emulator reaches a server on the development machine at `http://10.0.2.2:8080`. Cleartext
+HTTP is accepted only for `localhost`, `127.0.0.1`, `10.0.2.2`, and private-network addresses
+(RFC1918 LAN ranges, link-local, and CGNAT such as Tailscale) by the client; public addresses and
+production servers must use HTTPS/WSS.
+
+## Validation
+
+```bash
+pnpm --filter @dsh-remote/android check
+pnpm --filter @dsh-remote/android test
+NODE_ENV=production pnpm --filter @dsh-remote/android build
+pnpm dlx expo-doctor@latest
+
+cd apps/android
+pnpm run prepare:workspace
+pnpm exec expo prebuild --platform android
+cd android
+./gradlew assembleDebug
+```
+
+## Structure
+
+```text
+src/
+  lib/       URL validation and user-facing errors
+  screens/   server sign-in, devices, sessions, chat, settings
+  services/  REST, secure storage, secure transport, Remote Runtime, Typert and CodeX clients
+  state/     Zustand store plus Harness mux and CodeX frame reducers
+  ui/        tokens and reusable mobile components
+```
+
+An active remote connection is owned by `services/remote-runtime.ts`, rather than by a
+screen. On Android, the runtime starts a low-importance Foreground Service through the
+Expo config plugin in `plugins/with-remote-foreground-service.js`; the service keeps the
+React Native process eligible while the app is backgrounded. It starts before credential
+requests, while the Activity can still start an Android foreground service. The native service
+holds a partial CPU wake lock and an RN Headless JS task so Activity pause does not suspend
+RPC timeouts, stream processing or transport fallback timers. Neither mechanism keeps the screen on.
+Android 13+ requests notification permission on a foreground connection attempt; granting it
+shows the ongoing connection notification, which opens the app when tapped. Denying it does
+not disable the service, but Android hides its notification from the drawer.
+Returning to the app verifies the existing encrypted channel with a bounded, five-second
+capability request and reconnects/restores the selected session if that check fails or the
+connection is already offline. Healthy carriers are retained. While connected, the same
+encrypted Host request also runs every 25 seconds (five-second deadline), independently of
+screens and Activity visibility. Resume and periodic checks share a single in-flight probe.
+A silent Host path is closed and reported offline even if the socket remains locally open.
+An established carrier closing, including while backgrounded, triggers up to three recovery
+attempts (after 1, 3 and 8 seconds). Auto transport retries a lost WebRTC path over a fresh
+Relay connection; explicit TURN/Relay preferences are preserved. Recovery reloads the selected
+session and history without resending prompts, answers or terminal input. Replaced connections,
+protocol refusals and reauthentication stop automatic retries. Offline chat hides the thinking
+indicator until the channel is restored. Recovery reuses the existing foreground service,
+Headless JS task and wake lock across failed attempts, rather than attempting to start a new
+service from the background. Its notification shows connecting, connected or disconnected /
+reconnecting. After the final failed attempt the service and wake lock are released.
+On the attached Xiaomi phone, the rebuilt APK retained its process through roughly four
+minutes screen-off; waking delivered a control-channel error at 16:25:47, followed by a
+verified new connection / connected notification at 16:25:50 and the restored chat. Battery
+settings were unchanged. The system marked the wake lock disabled while asleep, so this
+confirms one wake/recovery path, not uninterrupted networking or long-term background survival.
+Further system logs on that phone identified Xiaomi's `greeze` screen-off freeze: about
+5.7 seconds after sleep, it disabled this foreground-service app's wake lock and explicitly
+destroyed the app's live TCP sockets. The socket error reached JS after waking. A JS heartbeat
+cannot prevent that system action. Xiaomi's per-app unrestricted battery/background policy
+needs separate device verification; the user's existing policy was retained during these tests.
+CodeX stream updates are coalesced in order over a bounded 100 ms window. Completion and
+approval notifications drain preceding deltas, while unchanged projections retain list data
+and retired subscriptions are fenced from reopened sessions. After rebuilding, one complete
+live reply passed on the attached Android phone without the observed VirtualizedList
+update-depth error. Long-running and background validation remains pending.
+The service is stopped when the user disconnects, initial setup fails, recovery is exhausted,
+or the connection is refused/replaced. This does not
+make a force-stopped process reconnect by itself; that remains an explicit recovery path.
+These native changes require rebuilding and reinstalling the APK. Device/OEM battery restrictions
+and deep Doze can still suspend networking; a foreground service and wake lock do not exempt
+the app from those policies. If necessary, allow notifications and unrestricted battery use in
+Android app settings. Long screen-off/background behavior still requires device validation.
+
+Harness conversations expose **Files** and **Terminal** from `+` → **Tool access** through the Host's fixed official Typert allowlist, requiring the native APIs in DSH 0.1.6-alpha.2 or later. Files lists workspace directories and previews UTF-8 text in 200-line pages without mutations; its title-bar Back returns from a file to its directory and closes the panel only at the workspace root, and refresh stays in the title bar. PNG/JPEG/GIF/WebP images and PDFs use bounded `workspaceFiles/stat` / `readBytes` reads, with size, offset, version, and content validation. DOC/DOCX/XLS/XLSX/PPT/PPTX use the Host's existing `officeToPdf` service, when available, and the same PDF viewer. The app allows up to 8 MiB per image preview, 16 MiB per PDF preview, and 50 MiB per Office source. Unsupported binary formats are not opened as text; HTML and SVG are never executed.
+
+PDF.js is pinned and bundled into a local, navigation-blocked WebView with no external resources, PDF scripts, links, forms, or downloads. Documents stay in memory: there is no app-managed plaintext file cache or external viewer handoff. Only one page is rendered at a time with a bounded canvas. Office conversions get a longer client request timeout, but Host limits still apply. Large conversion responses use the existing transfer carrier; mobile limits do not change the Host conversion limits. Encrypted PDFs and text selection in the PDF canvas are not supported. The bounded text overlay is best-effort; TalkBack still needs device validation. External CMaps and WebAssembly decoders are not bundled, so some legacy CJK PDFs or JPEG2000 images may render incompletely. Missing Host fonts are shown as a layout warning. Images are capped at 8192 pixels per side and 16 million pixels total. Closing or navigating away cancels pending reads and discards preview state.
+
+Terminal uses a locally bundled xterm renderer in a navigation-blocked WebView; no CDN is used.
+Enable Remote terminal on the Host first. It runs as the Host user, independently of Agent approval.
+Each attachment obtains fresh input ownership, recovers a bounded screen snapshot, and stops input
+after loss of ownership or connection. Uncertain writes and queued input are never replayed. Closing
+the panel releases its follow/retention streams; ending a terminal explicitly terminates it. Host
+idle reclamation still applies.
+
+Permission options come from the legacy Session projection or the new `permissionPresets/catalog`
+endpoint. Missing catalogs remain an error, never a reason to assume a permissive preset. Update the
+Host Remote plugin as well as the app to use new catalogs. CodeX keeps its existing separate controls.
+
+Run `pnpm run prepare:workspace` before invoking Gradle directly: it generates the ignored local
+terminal and PDF renderers from pinned xterm and PDF.js packages via `build:renderers`. CI and release
+APK jobs run the generators explicitly. Rebuild the APK to include both offline renderers.
+The WebView native dependency requires a new APK; a JavaScript-only update to an old APK is insufficient.
+
+Arbitrary tool RPCs remain unavailable. CodeX actions use separate fixed App Server schemas; Host
+policy remains authoritative. Native keyboard, TalkBack, and cross-device regression need real-device
+validation for this addition.
+
+## AGY workspaces
+
+When the Host enables the Antigravity ACP backend, Android loads its workspace roots and the latest
+100 conversations per directory from AGY's own catalog. Selecting a directory can also create a new
+blank conversation. History and live frames use `agent.acp.*`; reconnect reloads durable history and
+reopens the stream. Replies refresh the conversation title. AGY supports text and PNG/JPEG/WebP/GIF
+images (8 MiB each, four per message); image prompts and history use bounded ACP transfers. Images
+remain in the Host's private temporary cache for up to 24 hours. The live Android projection stays
+in memory and never writes DSH SessionStore or Workspace data; the separate encrypted text preview
+cache is described above. Cursor remains a separate backend.
+
+Validation: Android typecheck, 286 tests, and production Hermes export passed. An in-process test
+using the real AGY CLI verified image replies and catalog/history/image recovery after Host restart;
+it did not exercise encrypted transport or an Android UI. No Android device or Java runtime was
+available, so this change has not been validated in a newly built APK on a physical device.
+
+## Bot mode
+
+The Bot button immediately left of **+** on the Host workspace header switches the
+Android view to a DS Bot team. Bot mode shows a Workspace switch immediately left of the three-dot menu;
+the menu contains Bot/group creation actions. This is a local navigation choice
+and does not change the Host's UI mode. The last Agent/Bot selection is saved per server, account and pinned Host identity and restored when returning to that Host, including after an app restart. Enable `ds-bot` in the connected Harness instance
+and use a Remote Host advertising `plugin.route.v1` (with `view-reply` support for
+interactive cards).
+
+The native team and conversation views provide Main Bots, Bot/group creation and
+editing, duplication/deletion, model/effort selection, group membership, text chat,
+live Harness history, questions, one-time approvals, and declarative interactive
+cards. Usage and schedules are read-only. Memory, connectors, credentials, browser
+control and Host preferences remain Host-local; this does not expose arbitrary
+plugin endpoints. Ordinary Bot messages use DS Bot's own `send` operation; opening a Bot or
+group resolves its current identity against the official Harness Session catalog.
+Older Host responses, disconnects and replaced connections fail closed. Mutations
+are never automatically retried. Team state remains in memory and polling pauses
+when the app is backgrounded. New Bot labels support Chinese/English (other locales
+currently fall back to English).
+
+DS Bot 0.2.1 support adds `/btw <question>` in private Bot chats, answer/cancel cards,
+side questions from earlier parts, and **Continue group** when Bot relays reach the
+Host's limit. Update Remote on the Host as well as the Android app. Side questions
+use dedicated operations and never fall back to ordinary queued messages on failure
+or older Hosts. The Host remains responsible for running and storing these cards;
+Android keeps them in memory, outside the Harness transcript.
+
+Cards support native charts (bar, horizontal bar, line, area and donut), sliders,
+numbers, choices, toggles and local formulas, with validated input submission.
+Charts also offer an exact data table. HTML views show their summary and a notice
+to open them on the Host; no model HTML or scripts run in Android. Local calculator
+inputs remain usable on display-only history cards, while submissions require a
+current pending card. Validation: Android type checks and 195 tests, Plugin type checks and 19 route tests, shared/Plugin builds, bundle verification and production Hermes export passed. No device was connected; APK/device, TalkBack and encrypted cross-device acceptance remain pending. The existing noble/hashes exports fallback warning remains.
+
+Device smoke checks on Xiaomi 2304FPN6DC against DSH-046 confirmed Bot roster and existing Chief conversation history loading. Full interaction and cross-device acceptance remain pending.
+
+Local validation (2026-10-22): Android type checks, all 32 test files / 189 tests,
+and an arm64 Release APK (including Hermes) pass. Tests cover Bot operation
+allowlisting, one-time approval, current-session authority, rejected Host responses,
+cancellation, and connection replacement/revocation. The existing Metro
+`@noble/hashes/crypto.js` package-exports fallback warning remains. A subsequent device check exposed React Native AbortSignal lacking `throwIfAborted`; cancellation now checks `aborted` directly. Type checks, 14 targeted Bot/connection tests and a rebuilt arm64 release APK passed; the APK was reinstalled and roster/history loading verified on the phone.
+
+Roster rows show the latest visible official session outline, excluding internal Bot exchanges; group previews use the Host-provided speaker and message. Roles/members remain the fallback for empty conversations.
+
+Bot conversations collapse intermediate reasoning/tool activity using the shared chat renderer. Pending questions/approvals remain visible, as do Bot cards and group replies. Opening a conversation follows the latest message after layout; manually scrolling upward stops following.
+
+Create a Bot directly with **+** beside **My team**, or create a group with **+** beside **Groups**. Conversation details use compact icon rows for edit/main/duplicate, with deletion separated in red.
+
+New Bots ask only for a name and optional model; omitted model/avatar settings use official Host defaults. New groups ask for a name and members, leaving administrator selection to the Host. Roles, instructions, reasoning effort and group administration remain in Edit. Creation calls the existing official create-bot/create-room operations directly.
+
+### Saving workspace files
+
+The file preview header offers Save to phone. On Android 10 and newer it writes to the system Downloads folder using MediaStore, without directory access permission. Android 8–9 use the system directory picker. Saves are limited to 100 MiB and use a temporary app-cache file, deleted after completion or cancellation; normal preview does not create this download cache. Incomplete MediaStore entries are not published. A short toast confirms successful saves.
