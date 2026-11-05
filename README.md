@@ -6,7 +6,7 @@
 
 DS Bot Go 是基于 [DSH Go](https://github.com/ccch1mneyyy/dsh-Go)、[DS Bot](https://github.com/Fei2411/DS-Bot) 和 [DS Harness Remote](https://github.com/liguobao/ds-harness-remote) 的社区衍生增强项目，底层使用 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)。项目使用自己的 Bot 图标和素材，不代表上游或 DeepSeek 官方。
 
-[下载安装包](https://github.com/tangchunhao71-hash/DS-Bot-Go/releases/latest) · [安装与构建](docs/GETTING_STARTED.md) · [来源与许可](docs/LICENSING.md) · [反馈问题](https://github.com/tangchunhao71-hash/DS-Bot-Go/issues) · [English](README.en.md)
+[下载安装包](https://github.com/tangchunhao71-hash/DS-Bot-Go/releases/latest) · [详细安装教程](docs/INSTALL_WINDOWS.zh.md) · [安装与构建](docs/GETTING_STARTED.md) · [来源与许可](docs/LICENSING.md) · [反馈问题](https://github.com/tangchunhao71-hash/DS-Bot-Go/issues) · [English](README.en.md)
 
 ## 可以做什么
 
@@ -21,6 +21,8 @@ DS Bot Go 是基于 [DSH Go](https://github.com/ccch1mneyyy/dsh-Go)、[DS Bot](h
 常见 Android 手机从 [Releases](https://github.com/tangchunhao71-hash/DS-Bot-Go/releases/latest) 下载 `DS-Bot-Go-1.0.12-arm64.apk`，在手机上点开安装。初版面向 Android 8 及以上的 arm64 设备。
 
 一个 APK 即可安装；**远程使用 DS Bot 时，电脑仍需运行 DS Bot 与兼容的 Remote Host，并保持在线。** 安装包不包含模型账号、API Key 或他人的 Bot 数据。按自己的账号与服务完成连接。
+
+手机不需要先装 DSH Go。新电脑需要本项目配套的 DS Bot 和 Remote 改版；1.0.12 尚未提供电脑端一键安装器，完整步骤见 [Windows + Android 安装教程](docs/INSTALL_WINDOWS.zh.md)。
 
 已经安装本项目兼容测试版的用户，应先核对发行说明中的包名和签名。不要为解决签名不一致而直接卸载有数据的旧版。
 

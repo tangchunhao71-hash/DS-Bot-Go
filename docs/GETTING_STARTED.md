@@ -1,5 +1,7 @@
 # 安装与构建
 
+首次安装请先阅读 [Windows 电脑 + Android 手机详细教程](INSTALL_WINDOWS.zh.md)，其中列明前置组件、配套 Remote 安装、账号连接及常见问题。本文继续保留 APK 源码构建说明。
+
 ## 手机安装
 
 从本项目 GitHub Releases 下载 arm64 APK，核对同页 SHA256SUMS。Android 8 及以上、arm64 架构为本版目标；不需要另装 Node、Termux 或电脑安装工具。
